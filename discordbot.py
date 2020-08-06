@@ -27,7 +27,7 @@ async def on_ready():
 @tasks.loop(seconds=30.0)
 async def loop():
     # 現在の時刻
-    date = datetime.now()
+    date = datetime.now(datetime.timedelta(hours=9))
     time = date.strftime('%H:%M')
     yobi = date.weekday()
     # 平日
