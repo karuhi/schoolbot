@@ -1,6 +1,6 @@
 import discord
 from discord.ext import tasks, commands
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import asyncio
 import os
 
@@ -27,7 +27,8 @@ async def on_ready():
 @tasks.loop(seconds=30.0)
 async def loop():
     # 現在の時刻
-    date = datetime.now(datetime.timedelta(hours=9))
+    JST = timezone(timedelta(hours=+9), 'JST')
+    date = datetime.now(JST)
     time = date.strftime('%H:%M')
     yobi = date.weekday()
     # 平日
